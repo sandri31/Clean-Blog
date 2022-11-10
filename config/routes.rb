@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root "articles#index"
   get "about", to: "public#about"
   get "contact", to: "public#contact"
+  get "post", to: "public#post"
 end
