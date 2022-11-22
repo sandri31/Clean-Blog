@@ -1,0 +1,75 @@
+<header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Contactez moi</h1>
+          <span class="subheading">Vous avez des questions ? Je suis là pour vous répondre !</span>
+        </div>
+      </div>
+    </div>
+</div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <p>Vous voulez me contacter ? Remplissez le formulaire ci-dessous pour m'envoyer un message et je vous répondrai dans les plus brefs délais !</p>
+        <div class="my-5">
+          <%= form_for @contact do |f| %>
+            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+              <!-- * * * * * * * * * * * * * * *-->
+              <!-- * * SB Forms Contact Form * *-->
+              <!-- * * * * * * * * * * * * * * *-->
+              <div class="form-floating">
+                  <%= f.text_field :name, class: "form-control", id: "name", placeholder: "Nom", required: "required", data: { "sb-validations": "required" } %>
+                  <%= f.label :name, "Nom", class: "form-label" %>
+                  <div class="invalid-feedback" data-sb-feedback="name:required">Veuillez renseigner ce champ.</div>
+              </div>
+              <div class="form-floating">
+                  <%= f.text_field :email, class: "form-control", id: "email", placeholder: "Email", required: "required", data: { "sb-validations": "required,email" } %>
+                  <%= f.label :email, "Email", class: "form-label" %>
+                  <div class="invalid-feedback" data-sb-feedback="email:required">Veuillez renseigner ce champ.</div>
+                  <div class="invalid-feedback" data-sb-feedback="email:email">Email non valide.</div>
+              </div>
+              <div class="form-floating">
+                  <%= f.text_field :phone, class: "form-control", id: "phone", placeholder: "Téléphone" %>
+                  <%= f.label :phone, "Téléphone *", class: "form-label" %>
+              </div>
+              <div class="form-floating">
+                  <%= f.text_area :message, class: "form-control", id: "message", placeholder: "Message", required: "required", data: { "sb-validations": "required" }, style: "height: 12rem" %>
+                  <%= f.label :message, "Message", class: "form-label" %>
+                  <div class="invalid-feedback" data-sb-feedback="message:required">Veuillez renseigner ce champ.</div>
+              </div>
+              <br />
+              <!-- Submit success message-->
+              <!---->
+              <!-- This is what your users will see when the form-->
+              <!-- has successfully submitted-->
+              <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center mb-3">
+                  <div class="fw-bolder">Envoie réussi !</div>
+                  Merci de m'avoir contacté ! Je vous répondrai dans les plus brefs délais.
+                </div>
+              </div>
+              <!-- Submit error message-->
+              <!---->
+              <!-- This is what your users will see when there is-->
+              <!-- an error submitting the form-->
+              <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'envoie du message !</div></div>
+              <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Valider</button>
+            </form>
+          <% end %>
+          <p>* Ce champ n'est pas obligatoire<p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<a class="btn btn-primary btn-lg" style="left: 0; top: 100%; background: transparent; border: none !important;" href="<%= articles_path %>"></a>

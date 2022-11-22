@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   resources :articles
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
   root "articles#index"
+
+  resources :contacts, only: [:new, :create ]
+  get '/contact', to: 'contacts#new', as: 'contact'
+  get 'contacts/sent'
+
   get "about", to: "public#about"
-  get "contact", to: "public#contact"
   get "post", to: "public#post"
 end
