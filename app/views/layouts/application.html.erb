@@ -16,10 +16,10 @@
   <body>
     <header>
       <%= render "partials/navbar" %>
-      <%= render "partials/flash" %>
     </header>
     <main>
     <%= yield %>
+    <%= render "partials/flash" %>
     <%= render "partials/footer" %>
     </main>
   </body>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :articles
+
   root "articles#index"
 
   resources :contacts, only: [:new, :create ]

@@ -11,6 +11,12 @@
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= about_path %>">A propos</a></li>
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= post_path %>">Dernier article</a></li>
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= contact_path %>">Contact</a></li>
+        <% if current_user %>
+          <!-- Voir le mot Admin dans le menu avec le mot écrit en couleur bleu -->
+          <li class="nav-item"><a><%= link_to "ADMIN", root_path, class: "nav-link px-lg-3 py-3 py-lg-4 disabled", style: "color: red;" %></a></li>
+          <li class="nav-item"><a><%= link_to "Nouvel article", new_article_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></a></li>
+          <li class="nav-item"><a><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "nav-link px-lg-3 py-3 py-lg-4" %></a></li>
+        <% end %>
       </ul>
     </div>
   </div>
