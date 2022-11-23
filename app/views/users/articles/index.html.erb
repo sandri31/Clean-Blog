@@ -18,13 +18,15 @@
       <!-- Post preview-->
       <% @articles.each do |article| %>
         <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title"><%= link_to article.title, article_path(article) %></h2>
-            <h3 class="post-subtitle"><%= link_to article.subtitle, article_path(article) %></h3>
+
+          <a href="/articles/<%= article.id %>">
+            <h2 class="post-title"><%= article.title %></h2>
+            <h3 class="post-subtitle"><%=  article.subtitle %></h3>
           </a>
           <p class="post-meta">
             Posted by
-            <a href="#!"><%= current_user.username %></a>
+            <!-- Affiche le nom de l'auteur de l'article -->
+            <a><%= article.user.username %></a>
             on September 24, 2022
           </p>
         </div>

@@ -13,7 +13,7 @@ module Users
 
     # GET /articles/new
     def new
-      @article = current_user.articles.build
+      @article = Article.articles.build
     end
 
     # GET /articles/1/edit
@@ -22,7 +22,7 @@ module Users
 
     # POST /articles or /articles.json
     def create
-      @article = current_user.articles.build(article_params)
+      @article = Article.articles.build(article_params)
 
       respond_to do |format|
         if @article.save
