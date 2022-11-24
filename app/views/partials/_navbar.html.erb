@@ -1,6 +1,19 @@
+
+<% if controller_name == "sessions" || controller_name == "registrations" || action_name == "edit" || action_name == "new" && controller_name == "articles" %>
+  <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto py-4 py-lg-0">
+        <li class="nav-item"><a><%= link_to current_user.username, root_path, class: "nav-link px-lg-3 py-3 py-lg-4 disabled", style: "color: red;" %></a></li>
+        <li class="nav-item"><a><%= link_to "Accueil", articles_path, class: "nav-link px-lg-3 py-3 py-lg-4", style: "color: black;" %></a></li>
+        <li class="nav-item"><a><%= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: "delete" }, method: :delete, class: "nav-link px-lg-3 py-3 py-lg-4", style: "color: black;" %></a></li>
+      <ul>
+    </div>
+  </div>
+<% else %>
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand" href="<%= articles_path %>">Start Bootstrap</a>
+    <a class="navbar-brand" href="<%= articles_path %>">Clean Blog</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
@@ -9,9 +22,17 @@
       <ul class="navbar-nav ms-auto py-4 py-lg-0">
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= articles_path %>">Accueil</a></li>
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= about_path %>">A propos</a></li>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= post_path %>">Dernier article</a></li>
+        <!-- Affiche le dernier article créé -->
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= article_path(Article.last) if Article.last %>">Dernier article</a></li>
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= contact_path %>">Contact</a></li>
+        <!-- SI l'utilisateur est connecté, on affiche le lien vers la page de profil -->
+        <% if user_signed_in? && current_user.admin? %>
+          <li class="nav-item"><a><%= link_to current_user.username, root_path, class: "nav-link px-lg-3 py-3 py-lg-4 disabled", style: "color: red;" %></a></li>
+          <li class="nav-item"><a><%= link_to "Nouvel article", new_article_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></a></li>
+          <li class="nav-item"><a><%= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: "delete" }, method: :delete, class: "nav-link px-lg-3 py-3 py-lg-4" %></a></li>
+        <% end %>
       </ul>
     </div>
   </div>
 </nav>
+<%end%>

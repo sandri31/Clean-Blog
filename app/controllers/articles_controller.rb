@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /articles or /articles.json
   def index
@@ -22,10 +23,10 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
-
+    @article.user = current_user
     respond_to do |format|
       if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
+        format.html { redirect_to article_url(@article), notice: "Article bel et bien créé" }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
+        format.html { redirect_to article_url(@article), notice: "Article bel et bien modifié" }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,9 +53,13 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
+      format.html { redirect_to articles_url, notice: "Article supprimé avec succès" }
       format.json { head :no_content }
     end
+  end
+
+  def post
+
   end
 
   private
@@ -65,6 +70,13 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :description, :user_id)
+      params.require(:article).permit(:title, :subtitle, :description)
     end
+
+    def require_same_user
+      if current_user != @article.user and current_user.admin? == false
+         flash[:danger] = "Tu te crois ou la Tony. C'est pas ton article"
+         redirect_to root_path
+      end
+  end
 end

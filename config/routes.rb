@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :articles
-  root "articles#index"
+  devise_for :users
 
-  resources :contacts, only: [:new, :create ]
   get '/contact', to: 'contacts#new', as: 'contact'
   get 'contacts/sent'
-
   get "about", to: "public#about"
-  get "post", to: "public#post"
+
+  root "articles#index"
+  resources :contacts, only: [:new, :create ]
+  resources :articles do
+    # Ajoute une route vers post
+    get "post", to: 'articles#post'
+  end
 end
