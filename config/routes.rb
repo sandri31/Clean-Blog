@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   root "articles#index"
   resources :contacts, only: [:new, :create ]
   resources :articles do
-    # Ajoute une route vers post
     get "post", to: 'articles#post'
   end
 end
