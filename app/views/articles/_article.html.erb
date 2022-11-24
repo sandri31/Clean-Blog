@@ -1,17 +1,17 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body text-center">
+        <h4 class="card-title"></h4>
+          <%= render "form", article: @article %>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= article.description %>
-  </p>
+<br>
 
-  <p>
-    <strong>User:</strong>
-    <%= article.user_id %>
-  </p>
-
+<div>
+  <%= link_to "Retour à l'accueil", articles_path, class: "btn btn-secondary" %>
+  <%= link_to "Voir l'article", @article, class: "btn btn-primary" %>
 </div>

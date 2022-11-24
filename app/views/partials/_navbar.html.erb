@@ -1,10 +1,12 @@
-<% if controller_name == "sessions" || controller_name == "registrations" %>
+
+<% if controller_name == "sessions" || controller_name == "registrations" || action_name == "edit" || action_name == "new" && controller_name == "articles" %>
   <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
   <div class="container px-4 px-lg-5">
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto py-4 py-lg-0">
+        <li class="nav-item"><a><%= link_to current_user.username, root_path, class: "nav-link px-lg-3 py-3 py-lg-4 disabled", style: "color: red;" %></a></li>
         <li class="nav-item"><a><%= link_to "Accueil", articles_path, class: "nav-link px-lg-3 py-3 py-lg-4", style: "color: black;" %></a></li>
-        <li class="nav-item"><a><%= link_to "À propos", about_path, class: "nav-link px-lg-3 py-3 py-lg-4", style: "color: black;" %></a></li>
+        <li class="nav-item"><a><%= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: "delete" }, method: :delete, class: "nav-link px-lg-3 py-3 py-lg-4", style: "color: black;" %></a></li>
       <ul>
     </div>
   </div>
