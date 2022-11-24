@@ -20,7 +20,7 @@
     <main>
     <%= yield %>
     <%= render "partials/flash" %>
-    <%#= debug(params) if Rails.env.development? %>
+    <%= debug(params) if Rails.env.development? %>
     <%#= console if Rails.env.development? %>
     <%= render "partials/footer" %>
     </main>

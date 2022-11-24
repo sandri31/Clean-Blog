@@ -26,3 +26,20 @@
     </div>
   </div>
 </article>
+<!-- Affiche uniquement si l'utilisateur connecté est admin -->
+<% if current_user.admin? %>
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="d-flex justify-content-between">
+          <div>
+            <%= link_to "Modifier", edit_article_path(@article), class: "btn btn-primary" %>
+          </div>
+          <div>
+            <%= link_to "Supprimer", article_path(@article), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
