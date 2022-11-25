@@ -20,6 +20,7 @@ gem "mail_form"
 gem "devise"
 gem "image_processing"
 gem "pagy"
+gem "friendly_id"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
