@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     @contact.request = request
 
     if @contact.deliver
-      redirect_to action: :sent, notice: 'Thank you for your message. We will contact you soon!'
+      redirect_to action: :sent
     else
       flash.now[:error] = 'Cannot send message.'
       render :new, status: :unprocessable_entity
