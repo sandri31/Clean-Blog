@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ edit update destroy ]
+  before_action :set_article, only: %i[ show edit update destroy ]
   before_action :require_same_user, only: %i[ edit update destroy ]
 
   # GET /articles or /articles.json
@@ -8,9 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1 or /articles/1.json
-  def show
-    @article = Article.friendly.find(params[:id])
-  end
+  def show; end
 
   # GET /articles/new
   def new
@@ -18,8 +16,7 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /articles or /articles.json
   def create
@@ -59,9 +56,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def post
-
-  end
+  def post; end
 
   private
     # Use callbacks to share common setup or constraints between actions.

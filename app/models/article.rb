@@ -7,5 +7,5 @@ class Article < ApplicationRecord
   validates :user_id, presence: true
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
 end
