@@ -3,7 +3,6 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="post-heading">
-          <!-- Affiche le titre de l'article -->
           <h1><%= @article.title %></h1>
           <h2 class="subheading"><%= @article.subtitle %></h2>
           <span class="meta">
@@ -26,7 +25,6 @@
     </div>
   </div>
 </article>
-<!-- Affiche uniquement si l'utilisateur connecté et admin en plus -->
 <% if current_user && current_user.admin? %>
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
