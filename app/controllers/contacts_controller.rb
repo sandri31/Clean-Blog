@@ -15,7 +15,5 @@ class ContactsController < ApplicationController
     end
   end
 
-  def sent
-
-  end
+  def sent; end
 end
