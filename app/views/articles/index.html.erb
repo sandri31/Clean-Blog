@@ -32,7 +32,7 @@
         <hr class="my-4" />
         <!-- Pager-->
       <% end %>
-      <div class="d-flex justify-content-end mb-4"><a><%= link_to "Older Posts →", articles_path if Article.exists? %></a></div>
+      <div class="d-flex justify-content-end mb-4"><a><%== pagy_bootstrap_nav(@pagy) %></a></div>
     </div>
   </div>
 </div>

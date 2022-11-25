@@ -150,6 +150,8 @@ GEM
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     pg (1.4.4)
     popper_js (2.11.6)
     public_suffix (5.0.0)
@@ -261,6 +263,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mail_form
+  pagy
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
