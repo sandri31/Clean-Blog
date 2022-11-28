@@ -15,7 +15,7 @@ Rails.application.configure do
     enable_starttls_auto: true }
 
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.hosts << ENV['HOSTNAME']
   # Code is not reloaded between requests.
   config.cache_classes = true
 
