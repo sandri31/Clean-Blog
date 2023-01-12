@@ -18,5 +18,10 @@
         <%= f.submit "Connexion", class: "mt-4 btn btn-dark w-100 mb-3" %>
       </div>
     <% end %>
+
+    <!-- change password -->
+    <div class="text-center">
+      <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "text-dark" %>
+    </div>
   </div>
 </div>
