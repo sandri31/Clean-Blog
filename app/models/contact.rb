@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Contact < MailForm::Base
   attribute :name,      validate: true
   attribute :email,     validate: ENV['EMAIL_REGEX']
   attribute :phone
-  attribute :message,   validate: true
+  attribute :message, validate: true
 
   def headers
     {
