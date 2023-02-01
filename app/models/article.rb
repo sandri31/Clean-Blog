@@ -2,6 +2,7 @@
 
 class Article < ApplicationRecord
   has_rich_text :body
+  has_one_attached :image
   belongs_to :user
 
   validates :title, presence: true, length: { minimum: 3, maximum: 100 }

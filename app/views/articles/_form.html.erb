@@ -24,10 +24,15 @@
     emoji_picker_target: "pickerContainer"
   }) %>
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.rich_text_area :body, data: { emoji_picker_target: "pickerContainer" }, class: 'trix-content', data: {
+    <%= form.label :body, style: "display: block" %>
+    <%= form.rich_text_area :body, data: { emoji_picker_target: "pickerContainer" }, data: {
       emoji_picker_target: "trixEditor"
     } %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="my-3">

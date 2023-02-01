@@ -3,6 +3,9 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
+  config.active_storage.variant_processor = :mini_magick
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
   config.hosts << ENV['HOSTNAME']
@@ -16,8 +19,6 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
-
-  # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
