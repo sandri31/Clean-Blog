@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This class represents an article in the blog. It contains the title, body, image, and author information.
 class Article < ApplicationRecord
   has_rich_text :body
   has_one_attached :image
