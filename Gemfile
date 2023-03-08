@@ -22,6 +22,7 @@ gem 'friendly_id'
 gem 'image_processing'
 gem 'mail_form'
 gem 'pagy'
+gem 'readingtime'
 gem 'sassc-rails'
 
 group :development, :test do

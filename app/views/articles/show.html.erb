@@ -5,11 +5,7 @@
         <div class="post-heading">
           <h1><%= @article.title %></h1>
           <h2 class="subheading"><%= @article.subtitle %></h2>
-          <span class="meta">
-            Posté par
-            <a href="#!"><%= @article.user.username %></a>
-            le <%= @article.created_at.strftime("%d/%m/%Y") %>
-          </span>
+          <span class="readingtime">Temps de lecture estimé – <%= @article.body.to_plain_text.reading_time %></span>
         </div>
       </div>
     </div>
@@ -23,6 +19,11 @@
         <%= @article.body %>
         <br />
         <% @article.image %>
+        <span class="meta">
+          Posté par
+          <a href="#!"><%= @article.user.username %></a>
+          le <%= @article.created_at.strftime("%d/%m/%Y") %>
+        </span>
       </div>
     </div>
   </div>
