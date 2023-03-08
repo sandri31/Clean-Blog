@@ -18,11 +18,13 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'bootstrap', '~> 5.1.3'
 gem 'devise'
+gem 'foreman', github: 'ddollar/foreman'
 gem 'friendly_id'
 gem 'image_processing'
 gem 'mail_form'
 gem 'pagy'
 gem 'sassc-rails'
+gem 'simple_form', '~> 5.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
