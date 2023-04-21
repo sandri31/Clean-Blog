@@ -21,7 +21,8 @@
         <% @article.image %>
         <span class="meta">
           Posté par
-          <a href="#!"><%= @article.user.username %></a>
+          <!-- lien vers le route contact_path -->
+          <a href="<%= contact_path %>"><%= @article.user.username %></a>
           le <%= @article.created_at.strftime("%d/%m/%Y") %>
         </span>
       </div>
