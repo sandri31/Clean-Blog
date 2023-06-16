@@ -5,7 +5,7 @@
         <div class="post-heading">
           <h1><%= @article.title %></h1>
           <h2 class="subheading"><%= @article.subtitle %></h2>
-          <span class="readingtime">Temps de lecture estimé – <%= @article.body.to_plain_text.reading_time %></span>
+          <span class="readingtime">Temps de lecture estimé – <%= @article.body.to_plain_text.reading_time :format => :approx %></span>
         </div>
       </div>
     </div>
