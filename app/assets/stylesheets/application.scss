@@ -11289,3 +11289,12 @@ body {
     display: none !important;
   }
 }
+
+// progress bar
+.progress_bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
