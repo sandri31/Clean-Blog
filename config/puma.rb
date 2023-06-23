@@ -10,6 +10,10 @@ max_threads_count = ENV.fetch('RAILS_MAX_THREADS') { 5 }
 min_threads_count = ENV.fetch('RAILS_MIN_THREADS') { max_threads_count }
 threads min_threads_count, max_threads_count
 
+# Specifies the `host` that Puma will listen on to receive requests; default is localhost.
+#
+bind "tcp://0.0.0.0:#{ENV.fetch('PORT') { 3000 }}"
+
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
 # terminating a worker in development environments.
 #
