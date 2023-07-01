@@ -26,4 +26,14 @@ RSpec.describe Article, type: :model do
     article = Article.new(user_id: nil)
     expect(article).to_not be_valid
   end
+
+  it 'is deleted when the associated user is deleted' do
+    user = FactoryBot.create(:user)
+    article = user.articles.create(
+      title: 'Test article',
+      body: 'This is a test article for Rspec.'
+    )
+
+    expect { user.destroy }.to change { Article.count }.by(-1)
+  end
 end
