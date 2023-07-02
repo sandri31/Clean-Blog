@@ -4,6 +4,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
   before_action :require_same_user, only: %i[edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   # GET /articles or /articles.json
   def index
@@ -72,9 +73,12 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
-    return unless current_user != @article.user && current_user.admin? == false
-
-    flash[:danger] = "Tu te crois ou la Tony. C'est pas ton article"
-    redirect_to root_path
+    if current_user.nil?
+      flash[:danger] = 'Vous devez vous connecter pour faire cela'
+      redirect_to new_user_session_path
+    elsif current_user != @article.user && !current_user.admin?
+      flash[:danger] = "Tu te crois ou la Tony. C'est pas ton article"
+      redirect_to root_path
+    end
   end
 end
