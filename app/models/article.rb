@@ -13,12 +13,5 @@ class Article < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: %i[slugged finders]
 
-  def self.search(search)
-    if search
-      sanitized_search = ActiveSupport::Inflector.transliterate(search)
-      where('title ILIKE ? OR subtitle ILIKE ?', "%#{sanitized_search}%", "%#{sanitized_search}%")
-    else
-      all
-    end
-  end
+  scope :filter_by_title, ->(title) { where('title ILIKE ?', "%#{title}%") }
 end

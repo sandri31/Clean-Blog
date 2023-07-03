@@ -15,20 +15,10 @@
 <div class="container px-4 px-lg-5">
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
-      <!-- Search form-->
-      <%= form_with(url: articles_path, method: :get, local: true) do %>
-        <div class="input-group">
-          <%= text_field_tag(:search, params[:search], class: "form-control", placeholder: "Rechercher...") %>
-          <div class="input-group-append">
-            <%= submit_tag('Rechercher', class: "btn btn-primary rounded", type: "submit") %>
-          </div>
-        </div>
-      <% end %>
+      <%= render "articles/search_form" %>
       <!-- Post preview-->
       <% @articles.each do |article| %>
         <div class="post-preview">
-
-          <!-- <%= link_to article.title, article_path(article) %> -->
           <a href="<%= article_path(article) %>">
             <h2 class="post-title"><%= article.title %></h2>
             <h3 class="post-subtitle"><%=  article.subtitle %></h3>
@@ -40,7 +30,6 @@
           </p>
         </div>
         <hr class="my-4" />
-        <!-- Pager-->
       <% end %>
       <div class="d-flex justify-content-end mb-4">
         <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
