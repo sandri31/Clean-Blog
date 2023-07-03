@@ -29,7 +29,7 @@ RSpec.describe Article, type: :model do
 
   it 'is deleted when the associated user is deleted' do
     user = FactoryBot.create(:user)
-    article = user.articles.create(
+    user.articles.create(
       title: 'Test article',
       body: 'This is a test article for Rspec.'
     )
