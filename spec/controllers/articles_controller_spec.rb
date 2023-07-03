@@ -13,9 +13,23 @@ RSpec.describe ArticlesController, type: :controller do
     end
 
     it 'assigns all articles to @articles' do
-      article = FactoryBot.create(:article)
       get :index
-      expect(assigns(:articles)).to eq([article])
+      expect(assigns(:articles)).to match_array([article1, article2])
+    end
+
+    context 'when a search query is given' do
+      it 'assigns @articles to articles that match the search query' do
+        get :index, params: { search: 'Test' }
+        expect(assigns(:articles)).to include(article1)
+        expect(assigns(:articles)).not_to include(article2)
+      end
+    end
+
+    context 'when no search query is given' do
+      it 'assigns @articles to all articles' do
+        get :index
+        expect(assigns(:articles)).to match_array([article1, article2])
+      end
     end
   end
 
@@ -32,21 +46,6 @@ RSpec.describe ArticlesController, type: :controller do
     it 'assigns the requested article to @article' do
       get :show, params: { id: @article.friendly_id }
       expect(assigns(:article)).to eq(@article)
-    end
-
-    context 'when a search query is given' do
-      it 'assigns @articles to articles that match the search query' do
-        get :index, params: { search: 'Test' }
-        expect(assigns(:articles)).to include(article1)
-        expect(assigns(:articles)).not_to include(article2)
-      end
-    end
-
-    context 'when no search query is given' do
-      it 'assigns @articles to all articles' do
-        get :index
-        expect(assigns(:articles)).to include(article1, article2)
-      end
     end
   end
 
