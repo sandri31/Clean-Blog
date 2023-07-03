@@ -33,6 +33,7 @@ RSpec.describe ArticlesController, type: :controller do
 
   describe 'GET #show' do
     let!(:article) { FactoryBot.create(:article) }
+    let(:article) { create(:article, publicly_published: false) }
 
     it 'returns a success response' do
       get :show, params: { id: article.friendly_id }
@@ -42,6 +43,24 @@ RSpec.describe ArticlesController, type: :controller do
     it 'assigns the requested article to @article' do
       get :show, params: { id: article.friendly_id }
       expect(assigns(:article)).to eq(article)
+    end
+
+    context 'when the user is not logged in' do
+      it 'redirects to the login page' do
+        get :show, params: { id: article.friendly_id }
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context 'when the user is logged in' do
+      before do
+        sign_in article.user
+      end
+
+      it 'shows the article' do
+        get :show, params: { id: article.friendly_id }
+        expect(response).to be_successful
+      end
     end
   end
 
