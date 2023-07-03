@@ -15,7 +15,6 @@ L'objectif était de concevoir un ensemble de fonctionnalités qui peuvent coexi
 
 Depuis sa création, le blog a subi plusieurs évolutions et ajouts de fonctionnalités tels que :
 
-* Formulaire de Contact.
 * Estimation du temps de lecture pour chaque article.
 * Une barre de progression qui offre un indicateur visuel du temps de lecture restant.
 * Une barre de recherche active qui permet de chercher des articles à l'aide de mots clés.
