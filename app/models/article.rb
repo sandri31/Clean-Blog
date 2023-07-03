@@ -12,4 +12,6 @@ class Article < ApplicationRecord
 
   extend FriendlyId
   friendly_id :title, use: %i[slugged finders]
+
+  scope :filter_by_title, ->(title) { where('title ILIKE ?', "%#{title}%") }
 end

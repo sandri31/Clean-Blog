@@ -29,11 +29,21 @@ RSpec.describe Article, type: :model do
 
   it 'is deleted when the associated user is deleted' do
     user = FactoryBot.create(:user)
-    article = user.articles.create(
+    user.articles.create(
       title: 'Test article',
       body: 'This is a test article for Rspec.'
     )
 
     expect { user.destroy }.to change { Article.count }.by(-1)
+  end
+
+  describe '.filter_by_title' do
+    let!(:article1) { create(:article, title: 'Test Article 1') }
+    let!(:article2) { create(:article, title: 'Another Article') }
+
+    it 'returns articles that match the title query' do
+      expect(Article.filter_by_title('Test')).to include(article1)
+      expect(Article.filter_by_title('Test')).not_to include(article2)
+    end
   end
 end

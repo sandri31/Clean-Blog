@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @pagy, @articles = pagy(Article.all.order(created_at: :desc))
+    @pagy, @articles = pagy(Article.all.order('created_at DESC'), items: 4)
   end
 
   # GET /articles/1 or /articles/1.json
@@ -57,6 +57,20 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to articles_url, notice: 'Article supprimé avec succès' }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+    @articles = if params[:title_search].present?
+                  Article.filter_by_title(params[:title_search])
+                else
+                  []
+                end
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update('search_results',
+                                                 partial: 'articles/search_results', locals: { articles: @articles })
+      end
     end
   end
 
