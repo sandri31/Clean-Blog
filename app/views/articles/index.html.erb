@@ -15,6 +15,15 @@
 <div class="container px-4 px-lg-5">
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
+      <!-- Search form-->
+      <%= form_with(url: articles_path, method: :get, local: true) do %>
+        <div class="input-group">
+          <%= text_field_tag(:search, params[:search], class: "form-control", placeholder: "Rechercher...") %>
+          <div class="input-group-append">
+            <%= submit_tag('Rechercher', class: "btn btn-primary rounded", type: "submit") %>
+          </div>
+        </div>
+      <% end %>
       <!-- Post preview-->
       <% @articles.each do |article| %>
         <div class="post-preview">

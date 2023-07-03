@@ -8,7 +8,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @pagy, @articles = pagy(Article.all.order(created_at: :desc))
+    if params[:search]
+      @pagy, @articles = pagy(Article.search(params[:search]).order(created_at: :desc))
+    else
+      @pagy, @articles = pagy(Article.all.order(created_at: :desc))
+    end
   end
 
   # GET /articles/1 or /articles/1.json
