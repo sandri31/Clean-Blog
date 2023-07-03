@@ -4,7 +4,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-# Blog - Mon Projet Personnel
+# Blog - Projet Personnel
 
 ## Introduction
 Ce projet a été conçu pour explorer la création et l'interconnexion d'une multitude de fonctionnalités dans une seule application. Le choix d'un blog a été motivé par le besoin de mettre en place divers aspects tels que la gestion des utilisateurs, la gestion des articles avec un formulaire de contact, tout en intégrant une base de données externe.
