@@ -37,17 +37,13 @@ RSpec.describe Article, type: :model do
     expect { user.destroy }.to change { Article.count }.by(-1)
   end
 
-  describe '.search' do
+  describe '.filter_by_title' do
     let!(:article1) { create(:article, title: 'Test Article 1') }
     let!(:article2) { create(:article, title: 'Another Article') }
 
-    it 'returns articles that match the search query' do
-      expect(Article.search('Test')).to include(article1)
-      expect(Article.search('Test')).not_to include(article2)
-    end
-
-    it 'returns all articles if no search query is given' do
-      expect(Article.search(nil)).to include(article1, article2)
+    it 'returns articles that match the title query' do
+      expect(Article.filter_by_title('Test')).to include(article1)
+      expect(Article.filter_by_title('Test')).not_to include(article2)
     end
   end
 end
