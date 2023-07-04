@@ -72,7 +72,7 @@ class ArticlesController < ApplicationController
 
   def search
     @articles = if params[:title_search].present?
-                  Article.filter_by_title(params[:title_search])
+                  Article.filter_by_title(params[:title_search]).where(publicly_published: true)
                 else
                   []
                 end
