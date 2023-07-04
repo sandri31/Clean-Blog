@@ -12,7 +12,17 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1 or /articles/1.json
-  def show; end
+  def show
+    @article = Article.friendly.find(params[:id])
+
+    return if @article.publicly_published || current_user&.admin? || current_user == @article.user
+
+    flash[:notice] = "Cet article n'est pas disponible publiquement"
+    redirect_to root_path
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Cet article n'existe pas"
+    redirect_to root_path
+  end
 
   # GET /articles/new
   def new
@@ -62,7 +72,7 @@ class ArticlesController < ApplicationController
 
   def search
     @articles = if params[:title_search].present?
-                  Article.filter_by_title(params[:title_search])
+                  Article.filter_by_title(params[:title_search]).where(publicly_published: true)
                 else
                   []
                 end
@@ -83,7 +93,7 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :image)
+    params.require(:article).permit(:title, :subtitle, :body, :image, :publicly_published)
   end
 
   def require_same_user

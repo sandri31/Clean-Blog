@@ -18,6 +18,7 @@
       <%= render "articles/search_form" %>
       <!-- Post preview-->
       <% @articles.each do |article| %>
+        <% next unless article.publicly_published? || current_user == article.user %>
         <div class="post-preview">
           <a href="<%= article_path(article) %>">
             <h2 class="post-title"><%= article.title %></h2>
