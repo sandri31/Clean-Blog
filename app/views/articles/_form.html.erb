@@ -11,6 +11,15 @@
     </div>
   <% end %>
 
+  <% if current_user == @article.user || current_user&.admin? %>
+    <div class="form-check">
+      <%= form.label :publicly_published, class: "form-check-label" do %>
+        <%= form.check_box :publicly_published, class: "form-check-input" %>
+        Publié publiquement
+      <% end %>
+    </div>
+  <% end %>
+
   <div>
     <%= form.label :titre, style: "display: block" %>
     <%= form.text_field :title, class: 'form-control' %>

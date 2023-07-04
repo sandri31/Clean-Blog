@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_171506) do
     t.datetime "published_at"
     t.string "slug"
     t.text "content"
-    t.boolean "publicly_published"
+    t.boolean "publicly_published", default: true
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
