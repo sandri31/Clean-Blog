@@ -12,9 +12,9 @@
   <% end %>
 
   <% if current_user == @article.user || current_user&.admin? %>
-    <div class="form-check">
-      <%= form.label :publicly_published, class: "form-check-label" do %>
-        <%= form.check_box :publicly_published, class: "form-check-input" %>
+    <div class="form-check form-switch">
+      <%= form.check_box :publicly_published, class: "form-check-input", id: "publiclyPublishedSwitch" %>
+      <%= form.label :publicly_published, class: "form-check-label", for: "publiclyPublishedSwitch" do %>
         Publié publiquement
       <% end %>
     </div>
