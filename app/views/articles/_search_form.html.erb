@@ -1,9 +1,7 @@
-<% unless browser.firefox? %>
-  <%= form_with(url: search_articles_path, method: :post) do |form| %>
-    <div class="input-group">
-      <%= form.search_field :title_search, class: "form-control", placeholder: "Rechercher...", oninput: "this.form.requestSubmit()" %>
-    </div>
-  <% end %>
+<%= form_with(url: search_articles_path, method: :post) do |form| %>
+  <div class="input-group">
+    <%= form.search_field :title_search, class: "form-control", placeholder: "Rechercher...", oninput: "this.form.requestSubmit()" %>
+  </div>
 <% end %>
 
 <div id="search_results"></div>
