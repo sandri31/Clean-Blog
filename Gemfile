@@ -17,6 +17,7 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'bootstrap', '~> 5.1.3'
+gem 'browser'
 gem 'devise'
 gem 'friendly_id'
 gem 'image_processing'

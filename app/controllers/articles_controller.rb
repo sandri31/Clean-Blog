@@ -81,7 +81,6 @@ class ArticlesController < ApplicationController
         render turbo_stream: turbo_stream.update('search_results',
                                                  partial: 'articles/search_results', locals: { articles: @articles })
       end
-      format.html
     end
   end
 
