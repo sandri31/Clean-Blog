@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   root 'articles#index'
   resources :contacts, only: %i[new create]
   resources :articles do
-    collection do
-      post :search
-    end
+    post :search, on: :collection
   end
 end
