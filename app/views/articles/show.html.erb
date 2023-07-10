@@ -27,6 +27,11 @@
           <a href="<%= contact_path %>"><%= @article.user.username %></a>
           le <%= @article.created_at.strftime("%d/%m/%Y") %>
         </span>
+        <div class="d-flex justify-content-between mt-4">
+          <div>
+            <%= link_to "Retour à l'accueil", articles_path, class: "btn btn-primary rounded" %>
+          </div>
+        <div>
       </div>
     </div>
   </div>
