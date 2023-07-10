@@ -1,17 +1,18 @@
 <div class="row justify-content-center mt-5">
   <div class="col-md-6">
-    <div class="card">
+    <div>
+      <%= link_to "Retour à l'accueil", articles_path, class: "btn btn-secondary rounded me-5 mt-5" %>
+      <%= link_to "Voir l'article", @article, class: "btn btn-primary rounded mt-5" %>
+    </div>
+    <div class="card mt-4">
       <div class="card-body">
         <h4 class="card-title"></h4>
         <%= render "form", article: @article %>
       </div>
     </div>
+    <div class="mt-4">
+      <%= link_to "Retour à l'accueil", articles_path, class: "btn btn-secondary rounded me-5" %>
+      <%= link_to "Voir l'article", @article, class: "btn btn-primary rounded" %>
+    </div>
   </div>
-</div>
-
-<br>
-
-<div>
-  <%= link_to "Retour à l'accueil", articles_path, class: "btn btn-secondary rounded" %>
-  <%= link_to "Voir l'article", @article, class: "btn btn-primary rounded" %>
 </div>
