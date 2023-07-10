@@ -8,7 +8,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @pagy, @articles = pagy(Article.all.order('created_at DESC'), items: 4)
+    if user_signed_in? && current_user.admin?
+      @pagy, @articles = pagy(Article.order('created_at DESC'), items: 4)
+    else
+      @pagy, @articles = pagy(Article.where(publicly_published: true).order('created_at DESC'), items: 4)
+    end
   end
 
   # GET /articles/1 or /articles/1.json
