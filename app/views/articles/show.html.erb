@@ -19,37 +19,23 @@
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="d-flex">
+          <%= render "admin_article_buttons" %>
+        </div>
         <%= @article.body %>
         <br />
-        <% @article.image %>
+        <%= @article.image if @article.image.attached? %>
         <span class="meta">
           Posté par
           <a href="<%= contact_path %>"><%= @article.user.username %></a>
           le <%= @article.created_at.strftime("%d/%m/%Y") %>
         </span>
         <div class="d-flex justify-content-between mt-4">
-          <div>
-            <%= link_to "Retour à l'accueil", articles_path, class: "btn btn-primary rounded" %>
-          </div>
-        <div>
-      </div>
-    </div>
-  </div>
-</article>
-<% if current_user && current_user.admin? %>
-  <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div class="d-flex justify-content-between">
-          <div>
-            <%= link_to "Editer l'article", edit_article_path(@article), class: "btn btn-primary rounded" %>
-          </div>
-          <div>
-            <%= link_to "Suprimer cet article", article_path(@article), class: "btn btn-xs btn-danger rounded", data: { "turbo-method": :delete, "turbo-confirm": "Etes-vous sûr?" } %>
-          </div>
+          <%= link_to "Retour à l'accueil", articles_path, class: "btn btn-primary rounded me-5" %>
+          <%= render "admin_article_buttons" %>
         </div>
       </div>
     </div>
   </div>
-<% end %>
+</article>
 <%= render "partials/scroll_to_top" %>

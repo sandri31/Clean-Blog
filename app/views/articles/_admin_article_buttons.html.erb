@@ -1,0 +1,4 @@
+<% if current_user && current_user.admin? %>
+    <%= link_to "Editer l'article", edit_article_path(@article), class: "btn btn-primary rounded me-5" %>
+    <%= link_to "Suprimer cet article", article_path(@article), class: "btn btn-xs btn-danger rounded", data: { "turbo-method": :delete, "turbo-confirm": "Etes-vous sûr?" } %>
+<% end %>
