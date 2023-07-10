@@ -21,7 +21,7 @@
         <ul class="navbar-nav ms-auto py-4 py-lg-0">
           <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= articles_path %>">Accueil</a></li>
           <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= about_path %>">A propos</a></li>
-          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= article_path(Article.last) if Article.last %>">Dernier article</a></li>
+          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= article_path(Article.where(publicly_published: true).last) if Article.where(publicly_published: true).last %>">Dernier article</a></li>
           <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= contact_path %>">Contact</a></li>
           <% if user_signed_in? && current_user.admin? %>
             <li class="nav-item"><a><%= link_to current_user.username, root_path, class: "nav-link px-lg-3 py-3 py-lg-4 disabled", style: "color: red;" %></a></li>
