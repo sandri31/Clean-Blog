@@ -37,10 +37,10 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="d-flex justify-content-between">
           <div>
-            <%= link_to "Editer l'article", edit_article_path(@article), class: "btn btn-primary" %>
+            <%= link_to "Editer l'article", edit_article_path(@article), class: "btn btn-primary rounded" %>
           </div>
           <div>
-            <%= link_to "Suprimer cet article", article_path(@article), class: "btn btn-xs btn-danger", data: { "turbo-method": :delete, "turbo-confirm": "Etes-vous sûr?" } %>
+            <%= link_to "Suprimer cet article", article_path(@article), class: "btn btn-xs btn-danger rounded", data: { "turbo-method": :delete, "turbo-confirm": "Etes-vous sûr?" } %>
           </div>
         </div>
       </div>
