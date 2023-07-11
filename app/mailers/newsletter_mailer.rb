@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class NewsletterMailer < ApplicationMailer
-  def newsletter_email(subscriber)
-    @subscriber = subscriber
-    @articles = Article.where(publicly_published: true).order(created_at: :desc).limit(4)
-    mail(to: @subscriber.email, subject: 'Voici le dernier article de mon blog')
+  def newsletter_email
+    @subscriber = params[:subscriber]
+    @article = params[:article]
+    mail(to: @subscriber.email, subject: 'Un nouvel article est disponible sur le blog')
   end
 end

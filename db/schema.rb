@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_11_092947) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_160007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_11_092947) do
     t.string "slug"
     t.text "content"
     t.boolean "publicly_published", default: true
+    t.text "summary"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
