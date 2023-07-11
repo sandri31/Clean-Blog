@@ -7,7 +7,7 @@ class SubscribersController < ApplicationController
     if @subscriber.save
       redirect_to root_path, notice: 'Merci pour votre inscription !'
     else
-      render :new
+      redirect_to root_path
     end
   end
 

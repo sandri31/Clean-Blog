@@ -13,7 +13,7 @@ RSpec.describe SubscribersController, type: :controller do
 
       it 'redirects to the new subscriber' do
         post :create, params: { subscriber: { email: 'test@example.com' } }
-        expect(response).to redirect_to Subscriber.last
+        expect(response).to redirect_to root_path
       end
     end
 
@@ -26,7 +26,7 @@ RSpec.describe SubscribersController, type: :controller do
 
       it 're-renders the new method' do
         post :create, params: { subscriber: { email: '' } }
-        expect(response).to render_template :new
+        expect(response).to redirect_to root_path
       end
     end
   end
