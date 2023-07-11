@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class NewsletterMailer < ApplicationMailer
-  def newsletter_email
-    @subscriber = params[:subscriber]
-    @article = params[:article]
-    mail(to: @subscriber.email, subject: 'Un nouvel article est disponible sur le blog')
+  def new_article(article)
+    @article = article
+    mail(to: Subscriber.pluck(:email), subject: 'Nouvel article disponible !')
   end
 end
