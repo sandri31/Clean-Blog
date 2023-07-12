@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @subscriber = Subscriber.new
+    @subscriber_count = Subscriber.count
     if user_signed_in? && current_user.admin?
       @pagy, @articles = pagy(Article.order('created_at DESC'), items: 4)
     else
