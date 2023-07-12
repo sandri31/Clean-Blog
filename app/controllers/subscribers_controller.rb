@@ -3,6 +3,7 @@
 class SubscribersController < ApplicationController
   def create
     @subscriber = Subscriber.new(subscriber_params)
+    @subscriber.token = SecureRandom.urlsafe_base64 # Generate a random token
 
     if @subscriber.save
       redirect_to root_path, notice: 'Merci pour votre inscription à la newsletter.'
@@ -12,7 +13,7 @@ class SubscribersController < ApplicationController
   end
 
   def unsubscribe
-    @subscriber = Subscriber.find_by(id: params[:id])
+    @subscriber = Subscriber.find_by(token: params[:token])
 
     if @subscriber
       @subscriber.destroy

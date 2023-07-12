@@ -6,5 +6,5 @@
   <p><%= link_to 'Lire l\'article', article_url(@article) %></p>
 </div>
 <div class="email-footer">
-  <%= link_to 'Se désinscrire', unsubscribe_subscriber_url(@subscriber) %>
+  <%= link_to 'Se désinscrire', unsubscribe_subscriber_url(token: @subscriber.token) %>
 </div>
