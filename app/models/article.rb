@@ -22,4 +22,8 @@ class Article < ApplicationRecord
   def send_newsletter
     NewsletterMailer.new_article(self).deliver_now
   end
+
+  def publicly_published?
+    publicly_published
+  end
 end

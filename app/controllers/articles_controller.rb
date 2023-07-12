@@ -44,8 +44,6 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        ArticleMailer.new_article_email(@article).deliver_later if @article.publicly_published
-
         format.html { redirect_to article_url(@article), notice: 'Article bel et bien créé' }
         format.json { render :show, status: :created, location: @article }
       else
