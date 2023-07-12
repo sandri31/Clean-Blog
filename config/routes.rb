@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   root 'articles#index'
   resources :contacts, only: %i[new create]
-  resources :subscribers, only: [:create]
+  resources :subscribers, only: [:create] do
+    member do
+      get :unsubscribe
+    end
+  end
   resources :articles do
     post :search, on: :collection
   end

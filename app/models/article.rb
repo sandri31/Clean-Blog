@@ -24,6 +24,8 @@ class Article < ApplicationRecord
   private
 
   def send_newsletter
-    NewsletterMailer.new_article(self).deliver_now
+    Subscriber.find_each do |subscriber|
+      NewsletterMailer.new_article(self, subscriber).deliver_now
+    end
   end
 end
