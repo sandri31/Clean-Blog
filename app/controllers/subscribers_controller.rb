@@ -12,7 +12,7 @@ class SubscribersController < ApplicationController
   end
 
   def unsubscribe
-    @subscriber = Subscriber.find(params[:id])
+    @subscriber = Subscriber.find_by(id: params[:id])
 
     if @subscriber
       @subscriber.destroy
