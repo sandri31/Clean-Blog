@@ -5,9 +5,9 @@ class SubscribersController < ApplicationController
     @subscriber = Subscriber.new(subscriber_params)
 
     if @subscriber.save
-      redirect_to root_path, notice: 'Merci pour votre inscription !'
+      redirect_to root_path, notice: 'Merci pour votre inscription à la newsletter.'
     else
-      redirect_to root_path, alert: 'Vous êtes déjà inscrit à la newsletter'
+      redirect_to root_path, alert: 'Vous êtes déjà inscrit à la newsletter.'
     end
   end
 
