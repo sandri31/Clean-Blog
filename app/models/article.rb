@@ -17,13 +17,13 @@ class Article < ApplicationRecord
 
   after_save :send_newsletter, if: :publicly_published?
 
+  def publicly_published?
+    publicly_published
+  end
+
   private
 
   def send_newsletter
     NewsletterMailer.new_article(self).deliver_now
-  end
-
-  def publicly_published?
-    publicly_published
   end
 end
