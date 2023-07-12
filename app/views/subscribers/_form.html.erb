@@ -7,7 +7,7 @@
         </svg>
       </div>
       <h3 class="text-center d-block mt-3">Rejoignez notre newsletter</h3>
-      <p class="mw-md mx-auto mb-10 text-secondary">Abonnez-vous à notre newsletter pour être informé de la publication de chaque nouvel article. Vous recevrez directement dans votre boîte mail les derniers articles publié.</p>
+      <p class="mw-md mx-auto mb-10 text-secondary text-center d-block mt-3">Vous recevrez directement dans votre boîte mail le dernier article publié.</p>
       <%= form_with(model: @subscriber, local: true, html: { class: 'text-center' }) do |form| %>
         <% if @subscriber.errors.any? %>
           <div id="error_explanation">
