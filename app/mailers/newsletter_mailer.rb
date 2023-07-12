@@ -10,7 +10,6 @@ class NewsletterMailer < ApplicationMailer
   def welcome_email(subscriber, article)
     @subscriber = subscriber
     @article = article
-    @article = Article.order(created_at: :desc).first
     mail(to: @subscriber.email, subject: 'Bienvenue sur notre newsletter !')
   end
 end
