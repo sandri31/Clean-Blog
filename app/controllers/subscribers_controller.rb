@@ -13,9 +13,13 @@ class SubscribersController < ApplicationController
 
   def unsubscribe
     @subscriber = Subscriber.find(params[:id])
-    @subscriber.destroy
 
-    redirect_to root_path, notice: 'Vous avez été désinscrit de la newsletter.'
+    if @subscriber
+      @subscriber.destroy
+      redirect_to root_path, notice: 'Vous avez été désinscrit de la newsletter.'
+    else
+      redirect_to root_path, notice: 'Vous êtes déjà désinscrit de la newsletter.'
+    end
   end
 
   private
