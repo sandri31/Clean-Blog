@@ -1,0 +1,9 @@
+<h1 class="email-header">Bienvenue sur notre newsletter !</h1>
+<div class="email-content">
+  <p>Merci de vous être inscrit à notre newsletter. Vous recevrez nos derniers articles publiés.</p>
+  <p>En attendant, voici notre dernier article :</p>
+  <p><%= link_to @article.title, article_url(@article) %></p>
+</div>
+<div class="email-footer">
+  <%= link_to 'Se désinscrire', unsubscribe_subscriber_url(token: @subscriber.token) %>
+</div>

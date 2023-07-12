@@ -6,6 +6,8 @@ class SubscribersController < ApplicationController
     @subscriber.token = SecureRandom.urlsafe_base64 # Generate a random token
 
     if @subscriber.save
+      @article = Article.where(publicly_published: true).order(created_at: :desc).first
+      NewsletterMailer.welcome_email(@subscriber, @article).deliver_now
       redirect_to root_path, notice: 'Merci pour votre inscription à la newsletter.'
     else
       redirect_to root_path, alert: 'Vous êtes déjà inscrit à la newsletter.'
