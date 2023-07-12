@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
+    @subscriber = Subscriber.new
     if user_signed_in? && current_user.admin?
       @pagy, @articles = pagy(Article.order('created_at DESC'), items: 4)
     else
@@ -40,6 +41,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+
     respond_to do |format|
       if @article.save
         format.html { redirect_to article_url(@article), notice: 'Article bel et bien créé' }
@@ -98,7 +100,7 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :image, :publicly_published)
+    params.require(:article).permit(:title, :subtitle, :body, :image, :publicly_published, :summary)
   end
 
   def require_same_user

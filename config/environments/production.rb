@@ -8,16 +8,21 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
-  config.hosts << ENV['HOSTNAME']
+  config.action_mailer.default_options = {
+    'X-PM-Message-Stream': 'outbound'
+  }
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.postmarkapp.com', # or the SMTP server you want to use
     port: 587,
-    user_name: ENV['EMAIL_USERNAME'],
-    password: ENV['SECRET_KEY'],
+    domain: ENV['HOSTNAME'],
+    user_name: ENV['POSTMARK_USER_NAME'],
+    password: ENV['POSTMARK_PASSWORD'],
     authentication: 'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    open_timeout: 5,
+    read_timeout: 5
   }
 
   # Code is not reloaded between requests.

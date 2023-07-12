@@ -8,9 +8,10 @@ class Contact < MailForm::Base
 
   def headers
     {
-      to: ENV['EMAIL_TO'],
+      to: ENV['MAILER_FROM'],
       subject: "#{name} te contact de ton site: Clean Blog'",
-      from: %("#{name}" <#{email}>)
+      from: 'contact@florentsandri.fr',
+      reply_to: %("#{name}" <#{email}>)
     }
   end
 end

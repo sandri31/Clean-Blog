@@ -4,6 +4,7 @@ RSpec.describe 'articles/index', type: :view do
   before do
     @articles = create_list(:article, 2)
     assign(:articles, @articles)
+    assign(:subscriber, Subscriber.new)
     assign(:pagy, Pagy.new(count: 1))
     render
   end

@@ -29,6 +29,12 @@
     <%= form.label :sous_titre, style: "display: block" %>
     <%= form.text_field :subtitle, class: 'form-control' %>
   </div>
+
+  <div>
+    <%= form.label :résumé, style: "display: block" %>
+    <%= form.text_area :summary, class: 'form-control' %>
+  </div>
+
   <%= content_tag(:div, "", class:"pickerContainer", data: {
     emoji_picker_target: "pickerContainer"
   }) %>

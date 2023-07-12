@@ -1,0 +1,10 @@
+<h1 class="email-header">Nouvel article disponible !</h1>
+<div class="email-content">
+  <p>Un nouvel article a été publié sur Clean Blog, en voici un résumé :</p>
+  <p><strong><%= @article.title %></strong></p>
+  <p><%= @article.summary %></p>
+  <p><%= link_to 'Lire l\'article', article_url(@article) %></p>
+</div>
+<div class="email-footer">
+  <%= link_to 'Se désinscrire', unsubscribe_subscriber_url(@subscriber) %>
+</div>

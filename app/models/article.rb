@@ -14,4 +14,18 @@ class Article < ApplicationRecord
   friendly_id :title, use: %i[slugged finders]
 
   scope :filter_by_title, ->(title) { where('title ILIKE ?', "%#{title}%") }
+
+  after_save :send_newsletter, if: :publicly_published?
+
+  def publicly_published?
+    publicly_published
+  end
+
+  private
+
+  def send_newsletter
+    Subscriber.find_each do |subscriber|
+      NewsletterMailer.new_article(self, subscriber).deliver_now
+    end
+  end
 end
