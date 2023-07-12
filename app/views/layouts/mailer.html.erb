@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+    .email-header {
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+    }
+    .email-content {
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+    .email-footer {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .email-footer a {
+      color: #999;
+      text-decoration: none;
+    }
+    .email-footer a:hover {
+      color: #666;
+    }
+  </style>
+</head>
 
-  <body>
+<body>
+  <div class="email-container">
     <%= yield %>
-  </body>
+  </div>
+</body>
 </html>
