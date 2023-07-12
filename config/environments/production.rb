@@ -7,13 +7,12 @@ Rails.application.configure do
   config.active_storage.variant_processor = :mini_magick
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
-  config.hosts << ENV['HOSTNAME']
   config.action_mailer.default_options = {
     'X-PM-Message-Stream': 'outbound'
   }
 
   # SMTP settings for gmail
+  config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
   config.action_mailer.smtp_settings = {
     address: 'smtp.postmarkapp.com', # or the SMTP server you want to use
     port: 587,
@@ -89,7 +88,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.raise_delivery_errors = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
