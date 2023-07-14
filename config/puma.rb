@@ -12,7 +12,7 @@ threads min_threads_count, max_threads_count
 
 # Specifies the `host` that Puma will listen on to receive requests; default is localhost.
 #
-bind "tcp://0.0.0.0:#{ENV.fetch('PORT') { 3000 }}"
+bind "tcp://0.0.0.0:#{ENV.fetch('PORT') { 3001 }}"
 
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
 # terminating a worker in development environments.
