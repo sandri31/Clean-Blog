@@ -21,6 +21,10 @@ class Article < ApplicationRecord
     publicly_published
   end
 
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
+
   private
 
   def send_newsletter
