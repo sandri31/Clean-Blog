@@ -21,6 +21,11 @@
   <% end %>
 
   <div>
+    <%= form.label :categories %>
+    <%= form.collection_select :category_ids, Category.all, :id, :name, { include_blank: true }, { multiple: true, class: 'form-control' } %>
+  </div>
+
+  <div>
     <%= form.label :titre, style: "display: block" %>
     <%= form.text_field :title, class: 'form-control' %>
   </div>

@@ -56,6 +56,8 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
+    clean_category_ids
+
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: 'Article bel et bien modifié' }
@@ -101,7 +103,7 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :subtitle, :body, :image, :publicly_published, :summary)
+    params.require(:article).permit(:title, :subtitle, :body, :image, :publicly_published, :summary, category_ids: [])
   end
 
   def require_same_user
@@ -112,5 +114,9 @@ class ArticlesController < ApplicationController
       flash[:danger] = "Tu te crois ou la Tony. C'est pas ton article"
       redirect_to root_path
     end
+  end
+
+  def clean_category_ids
+    params[:article][:category_ids].reject!(&:blank?) if params[:article][:category_ids].present?
   end
 end
