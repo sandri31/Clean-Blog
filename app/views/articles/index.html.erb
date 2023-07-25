@@ -25,12 +25,8 @@
           <a href="<%= article_path(article) %>">
             <h2 class="post-title"><%= article.title %></h2>
             <h3 class="post-subtitle"><%=  article.subtitle %></h3>
+            <small>Le <%= I18n.l(article.created_at, format: "%d %B %Y") %></small> – <%= article.body.to_plain_text.reading_time :format => :approx %>
           </a>
-          <p class="post-meta">
-            Posté par
-            <a><%= article.user.username %></a>
-            le <%= article.created_at.strftime("%d/%m/%Y") %>
-          </p>
         </div>
         <hr class="my-4" />
       <% end %>

@@ -5,7 +5,19 @@
         <div class="post-heading">
           <h1><%= @article.title %></h1>
           <h2 class="subheading"><%= @article.subtitle %></h2>
-          <span class="readingtime">Temps de lecture estimé – <%= @article.body.to_plain_text.reading_time :format => :approx %></span>
+          <div class="d-flex align-items-center">
+            <div class="pe-3">
+              <%= link_to about_path do %>
+                <%= gravatar_for ENV['MAILER_FROM'], size: 70 %>
+              <% end %>
+            </div>
+            <div>
+              <%= link_to about_path do %>
+                <p class="mb-0 fw-bold text-white">Florent Sandri</p>
+              <% end %>
+              <p class="readingtime"><small>Le <%= I18n.l(@article.created_at, format: "%d %B %Y") %></small> – <%= @article.body.to_plain_text.reading_time :format => :approx %></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -25,11 +37,6 @@
         <%= @article.body %>
         <br />
         <%= @article.image if @article.image.attached? %>
-        <span class="meta">
-          Posté par
-          <a href="<%= contact_path %>"><%= @article.user.username %></a>
-          le <%= @article.created_at.strftime("%d/%m/%Y") %>
-        </span>
         <div class="d-flex justify-content-between mt-4">
           <%= link_to "Retour à l'accueil", articles_path, class: "btn btn-primary rounded me-5" %>
           <%= render "admin_article_buttons" %>
