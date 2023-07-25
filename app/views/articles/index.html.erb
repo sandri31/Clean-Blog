@@ -17,6 +17,10 @@
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
       <%= render "partials/flash" %>
+      <div class="border-bottom mb-4">
+        <h1>Articles</h1>
+        <p class="text-muted fs-6 mb-3 mt-1">Tu trouveras ici tous les articles que j'ai publiés, bonne lecture !</p>
+      </div>
       <%= render "search_form" %>
       <!-- Post preview-->
       <% @articles.each do |article| %>
