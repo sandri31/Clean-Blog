@@ -1,6 +1,6 @@
 <%#= articles.count %>
 <% articles.each do |article| %>
-<br />
-  <%#= article.title %>
-  <%= link_to highlight(article.title, params[:title_search]), article %>
+  <div class="list-group">
+    <%= link_to highlight(article.title, params[:title_search]), article, class: "list-group-item list-group-item-action my-link" %>
+  </div>
 <% end %>
