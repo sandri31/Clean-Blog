@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_121258) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_171855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,8 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_121258) do
     t.text "content"
     t.boolean "publicly_published", default: true
     t.text "summary"
-    t.bigint "category_id", null: false
-    t.index ["category_id"], name: "index_articles_on_category_id"
+    t.boolean "newsletter_sent", default: false
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
@@ -110,5 +109,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_121258) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "article_categories", "articles"
   add_foreign_key "article_categories", "categories"
-  add_foreign_key "articles", "categories"
 end
