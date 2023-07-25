@@ -30,6 +30,7 @@
             <h2 class="post-title"><%= article.title %></h2>
             <h3 class="post-subtitle"><%=  article.subtitle %></h3>
             <small>Le <%= I18n.l(article.created_at, format: "%d %B %Y") %></small> – <%= article.body.to_plain_text.reading_time :format => :approx %>
+            <%= article.category.name %>
           </a>
         </div>
         <hr class="my-4" />

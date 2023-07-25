@@ -21,6 +21,10 @@
   <% end %>
 
   <div>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+  <div>
     <%= form.label :titre, style: "display: block" %>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
