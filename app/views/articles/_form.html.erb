@@ -21,7 +21,9 @@
   <% end %>
 
   <div>
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
+    <%= form.label :categories %>
+    <%= form.label :categories %>
+    <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true, class: 'form-control' } %>
   </div>
 
   <div>

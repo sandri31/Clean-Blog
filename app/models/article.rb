@@ -5,7 +5,8 @@ class Article < ApplicationRecord
   has_rich_text :body
   has_one_attached :image
   belongs_to :user
-  belongs_to :category
+  has_many :article_categories
+  has_many :categories, through: :article_categories
 
   validates :title, presence: true, length: { minimum: 3, maximum: 100 }
   validates :body, presence: true, length: { minimum: 5, maximum: 9000 }

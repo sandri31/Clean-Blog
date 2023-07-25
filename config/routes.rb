@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   root 'articles#index'
   resources :contacts, only: %i[new create]
+  resources :categories
   resources :subscribers, only: [:create], param: :token do
     member do
       get :unsubscribe
