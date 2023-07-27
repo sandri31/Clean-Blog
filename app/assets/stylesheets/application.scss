@@ -11041,3 +11041,9 @@ body {
 .modal-title {
   text-decoration: underline;
 }
+body.modal-open {
+  padding-right: 0 !important;
+}
+html {
+  overflow-y: scroll;
+}
