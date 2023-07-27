@@ -15,6 +15,14 @@ class ArticlesController < ApplicationController
     else
       @pagy, @articles = pagy(Article.where(publicly_published: true).order('created_at DESC'), items: 4)
     end
+
+    if params[:payment] == 'success'
+      Donation.create(email: params[:email], amount: params[:amount])
+
+      flash[:notice] = 'Votre don a été reçu avec succès. Merci pour votre générosité !'
+    elsif params[:payment] == 'cancel'
+      flash[:alert] = 'Votre don a été annulé.'
+    end
   end
 
   # GET /articles/1 or /articles/1.json

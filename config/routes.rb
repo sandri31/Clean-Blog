@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   get 'contacts/sent'
   get 'about', to: 'public#about'
 
+  # Route Stripe webhooks and checkout session
+  get 'webhooks/stripe'
+  post '/webhooks/stripe', to: 'webhooks#stripe'
+  post '/create-checkout-session', to: 'payments#create_checkout_session'
+
   root 'articles#index'
   resources :contacts, only: %i[new create]
   resources :categories, only: [:show]

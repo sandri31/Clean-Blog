@@ -1,0 +1,36 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Merci pour votre soutien !</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Faire un don me permet de continuer à développer des projets open source et à partager mes connaissances sur mon blog.
+      </div>
+      <div class="modal-footer justify-content-center">
+        <%= form_with url: "/create-checkout-session", method: "post", local: true, data: { turbo: false }, class: "form-inline" do %>
+          <%= hidden_field_tag :amount %>
+          <%= button_tag "2 euros", class: "btn btn-primary rounded px-3 py-2", data: { amount: 200 } %>
+          <%= button_tag "5 euros", class: "btn btn-primary rounded px-3 py-2", data: { amount: 500 } %>
+          <%= button_tag "10 euros", class: "btn btn-primary rounded px-3 py-2", data: { amount: 1000 } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var form = document.querySelector("form");
+    var amountField = document.querySelector("input[name='amount']");
+    var buttons = Array.from(form.querySelectorAll("button"));
+
+    buttons.forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        amountField.value = event.currentTarget.dataset.amount;
+      });
+    });
+  });
+</script>
