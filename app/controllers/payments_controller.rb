@@ -4,6 +4,14 @@ class PaymentsController < ApplicationController
   def create_checkout_session
     Stripe.api_key = Rails.env.production? ? ENV['STRIPE_SECRET_KEY'] : ENV['STRIPE_TEST_SECRET_KEY']
 
+    amount = params[:amount].to_i
+
+    if amount <= 0
+      flash[:alert] = 'Oups, petit problème technique, veuillez réessayer'
+      redirect_to root_path
+      return
+    end
+
     session = Stripe::Checkout::Session.create({
                                                  payment_method_types: ['card'],
                                                  line_items: [{
@@ -12,7 +20,7 @@ class PaymentsController < ApplicationController
                                                      product_data: {
                                                        name: 'Donation'
                                                      },
-                                                     unit_amount: params[:amount]
+                                                     unit_amount: amount
                                                    },
                                                    quantity: 1
                                                  }],

@@ -30,7 +30,8 @@
 
     buttons.forEach(function(button) {
       button.addEventListener("click", function(event) {
-        amountField.value = event.currentTarget.dataset.amount;
+        // Convert the string to integer before assigning
+        amountField.value = parseInt(event.currentTarget.dataset.amount);
       });
     });
   });
