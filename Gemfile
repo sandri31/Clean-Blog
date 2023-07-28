@@ -23,9 +23,11 @@ gem 'friendly_id'
 gem 'image_processing'
 gem 'mail_form'
 gem 'pagy'
+gem 'pay'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'readingtime'
 gem 'sassc-rails'
+gem 'stripe', '~> 7.0'
 gem 'unidecode'
 
 group :development, :test do

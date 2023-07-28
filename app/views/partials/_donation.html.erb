@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Merci pour votre soutien !</h1>
+        <button type="button" class="btn-close position-absolute end-0 me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Faire un don me permet de continuer à développer des projets open source et à partager mes connaissances sur mon blog.<br><br>
+      Si vous apprécié mon travail, vous pouvez me soutenir en faisant un don.
+      </div>
+      <div class="modal-footer justify-content-center">
+        <%= form_with url: "/create-checkout-session", method: "post", local: true, data: { turbo: false }, class: "form-inline" do %>
+          <%= button_tag "1 euro", name: "amount", value: 100, class: "btn btn-primary rounded px-3 py-2" %>
+          <%= button_tag "2 euros", name: "amount", value: 200, class: "btn btn-primary rounded px-3 py-2" %>
+          <%= button_tag "5 euros", name: "amount", value: 500, class: "btn btn-primary rounded px-3 py-2" %>
+          <%= button_tag "10 euros", name: "amount", value: 1000, class: "btn btn-primary rounded px-3 py-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

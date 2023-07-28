@@ -11034,3 +11034,16 @@ body {
 .my-link:hover {
   color: #0085a1;
 }
+// modal
+.modal-header {
+  background-color: #0085a1;
+}
+.modal-title {
+  text-decoration: underline;
+}
+body.modal-open {
+  padding-right: 0 !important;
+}
+html {
+  overflow-y: scroll;
+}
