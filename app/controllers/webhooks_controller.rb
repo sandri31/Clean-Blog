@@ -4,32 +4,29 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def stripe
-    payload = request.body.read
-    sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    event = nil
-
     begin
+      payload = request.body.read
+      sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+      event = nil
+
       event = Stripe::Webhook.construct_event(
-        payload, sig_header, Rails.application.credentials.dig(:stripe, :webhook)
+        payload, sig_header, ENV['STRIPE_WEBHOOK_SECRET']
       )
+
+      puts "Webhook event received: #{event}"
     rescue JSON::ParserError => e
       # Invalid payload
+      puts "JSON::ParserError: #{e.message}"
       status 400
       return
     rescue Stripe::SignatureVerificationError => e
       # Invalid signature
+      puts "Stripe::SignatureVerificationError: #{e.message}"
       status 400
       return
-    end
-
-    # Handle the checkout.session.completed event
-    if event['type'] == 'checkout.session.completed'
-      session = event['data']['object']
-
-      Donation.create!(
-        email: session['customer_details']['email'],
-        amount: session['amount_total']
-      )
+    rescue => e
+      puts "Error: #{e.message}"
+      raise e
     end
 
     render json: { message: 'success' }
