@@ -13,19 +13,19 @@ class WebhooksController < ApplicationController
         payload, sig_header, ENV['STRIPE_WEBHOOK_SECRET']
       )
 
-      puts "Webhook event received: #{event}"
+      # puts "Webhook event received: #{event}"
     rescue JSON::ParserError => e
       # Invalid payload
-      puts "JSON::ParserError: #{e.message}"
+      # puts "JSON::ParserError: #{e.message}"
       status 400
       return
     rescue Stripe::SignatureVerificationError => e
       # Invalid signature
-      puts "Stripe::SignatureVerificationError: #{e.message}"
+      # puts "Stripe::SignatureVerificationError: #{e.message}"
       status 400
       return
     rescue => e
-      puts "Error: #{e.message}"
+      # puts "Error: #{e.message}"
       raise e
     end
 
