@@ -17,8 +17,6 @@ class ArticlesController < ApplicationController
     end
 
     if params[:payment] == 'success'
-      Donation.create(email: params[:email], amount: params[:amount])
-
       flash[:notice] = 'Votre don a été reçu avec succès. Merci pour votre générosité !'
     elsif params[:payment] == 'cancel'
       flash[:alert] = 'Votre don a été annulé.'
