@@ -12,10 +12,14 @@
       </div>
       <div class="modal-footer justify-content-center">
         <%= form_with url: "/create-checkout-session", method: "post", local: true, data: { turbo: false }, class: "form-inline" do %>
-          <%= button_tag "1 euro", name: "amount", value: 100, class: "btn btn-primary rounded px-3 py-2" %>
-          <%= button_tag "2 euros", name: "amount", value: 200, class: "btn btn-primary rounded px-3 py-2" %>
-          <%= button_tag "5 euros", name: "amount", value: 500, class: "btn btn-primary rounded px-3 py-2" %>
-          <%= button_tag "10 euros", name: "amount", value: 1000, class: "btn btn-primary rounded px-3 py-2" %>
+          <div class="d-flex justify-content-center mb-2">
+            <%= button_tag "1 euro", name: "amount", value: 100, class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+            <%= button_tag "2 euros", name: "amount", value: 200, class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+            <%= button_tag "5 euros", name: "amount", value: 500, class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+          </div>
+          <div class="d-flex justify-content-center">
+            <%= button_tag "10 euros", name: "amount", value: 1000, class: "btn btn-primary rounded px-3 py-2 mx-1 w-100" %>
+          </div>
         <% end %>
       </div>
     </div>
