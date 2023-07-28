@@ -5,6 +5,7 @@ class PaymentsController < ApplicationController
     Stripe.api_key = Rails.env.production? ? ENV['STRIPE_SECRET_KEY'] : ENV['STRIPE_TEST_SECRET_KEY']
 
     amount = params[:amount].to_i
+    puts "amount: #{amount}"
 
     if amount <= 0
       flash[:alert] = 'Oups, petit problème technique, veuillez réessayer'

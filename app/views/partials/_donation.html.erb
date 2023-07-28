@@ -12,27 +12,11 @@
       </div>
       <div class="modal-footer justify-content-center">
         <%= form_with url: "/create-checkout-session", method: "post", local: true, data: { turbo: false }, class: "form-inline" do %>
-          <%= hidden_field_tag :amount %>
-          <%= button_tag "2 euros", class: "btn btn-primary rounded px-3 py-2", data: { amount: 200 } %>
-          <%= button_tag "5 euros", class: "btn btn-primary rounded px-3 py-2", data: { amount: 500 } %>
-          <%= button_tag "10 euros", class: "btn btn-primary rounded px-3 py-2", data: { amount: 1000 } %>
+          <%= button_tag "2 euros", name: "amount", value: 200, class: "btn btn-primary rounded px-3 py-2" %>
+          <%= button_tag "5 euros", name: "amount", value: 500, class: "btn btn-primary rounded px-3 py-2" %>
+          <%= button_tag "10 euros", name: "amount", value: 1000, class: "btn btn-primary rounded px-3 py-2" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var form = document.querySelector("form");
-    var amountField = document.querySelector("input[name='amount']");
-    var buttons = Array.from(form.querySelectorAll("button"));
-
-    buttons.forEach(function(button) {
-      button.addEventListener("click", function(event) {
-        // Convert the string to integer before assigning
-        amountField.value = parseInt(event.currentTarget.dataset.amount);
-      });
-    });
-  });
-</script>

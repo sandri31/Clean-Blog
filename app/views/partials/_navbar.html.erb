@@ -24,9 +24,7 @@
           <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= article_path(Article.where(publicly_published: true).last) if Article.where(publicly_published: true).last %>">Dernier article</a></li>
           <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="<%= contact_path %>">Contact</a></li>
           <!-- Button trigger Donation modal -->
-          <% if current_page?(root_path) %>
-            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4 text-black" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Faire un don</a></li>
-          <% end %>
+          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Faire un don</a></li>
           <% if user_signed_in? && current_user.admin? %>
             <li class="nav-item"><a><%= link_to current_user.username, root_path, class: "nav-link px-lg-3 py-3 py-lg-4 disabled", style: "color: red;" %></a></li>
             <li class="nav-item"><a><%= link_to "Nouvel article", new_article_path, class: "nav-link px-lg-3 py-3 py-lg-4" %></a></li>
