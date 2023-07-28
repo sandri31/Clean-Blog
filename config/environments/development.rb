@@ -7,7 +7,7 @@ Rails.application.configure do
   config.active_storage.variant_processor = :mini_magick
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3001 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
