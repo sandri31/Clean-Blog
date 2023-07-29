@@ -4,14 +4,17 @@ class PaymentsController < ApplicationController
   def create_checkout_session
     Stripe.api_key = Rails.env.production? ? ENV['STRIPE_SECRET_KEY'] : ENV['STRIPE_TEST_SECRET_KEY']
 
-    amount = params[:amount].to_i
+    amount_in_euros = params[:amount].to_i
     # puts "amount: #{amount}"
 
-    if amount <= 0
+    if amount_in_euros <= 0
       flash[:alert] = 'Oups, petit problème technique, veuillez réessayer'
       redirect_to root_path
       return
     end
+
+    # Convert amount in euros to cents
+    amount_in_euros *= 100
 
     session = Stripe::Checkout::Session.create({
                                                  payment_method_types: ['card'],
@@ -21,7 +24,7 @@ class PaymentsController < ApplicationController
                                                      product_data: {
                                                        name: 'Donation'
                                                      },
-                                                     unit_amount: amount
+                                                     unit_amount: amount_in_euros
                                                    },
                                                    quantity: 1
                                                  }],
