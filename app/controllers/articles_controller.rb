@@ -18,8 +18,10 @@ class ArticlesController < ApplicationController
 
     if params[:payment] == 'success'
       flash[:notice] = 'Votre don a été reçu avec succès. Merci pour votre générosité !'
+      redirect_to root_path
     elsif params[:payment] == 'cancel'
       flash[:alert] = 'Votre don a été annulé.'
+      redirect_to root_path
     end
   end
 
