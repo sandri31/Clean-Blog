@@ -13,9 +13,15 @@
       <div class="modal-footer justify-content-center">
         <%= form_with url: "/create-checkout-session", method: "post", local: true, data: { turbo: false }, class: "form-inline" do %>
           <div class="d-flex justify-content-center mb-2">
-            <%= button_tag "1 euro", name: "price_id", value: "price_1NaLLgDMXuq8UgRgX81hd5hx", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
-            <%= button_tag "2 euros", name: "price_id", value: "price_1NY6yYDMXuq8UgRgpqYz5jRK", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
-            <%= button_tag "5 euros", name: "price_id", value: "price_1NaLN0DMXuq8UgRg6xcDT4RR", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+            <% if Rails.env.development? %>
+              <%= button_tag "1 euro", name: "price_id", value: "price_1NaLLgDMXuq8UgRgX81hd5hx", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+              <%= button_tag "2 euros", name: "price_id", value: "price_1NY6yYDMXuq8UgRgpqYz5jRK", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+              <%= button_tag "5 euros", name: "price_id", value: "price_1NaLN0DMXuq8UgRg6xcDT4RR", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+            <% else %>
+              <%= button_tag "1 euro", name: "price_id", value: "price_1NaLM9DMXuq8UgRgKQfSLWyw", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+              <%= button_tag "2 euros", name: "price_id", value: "price_1NaLMGDMXuq8UgRgJks13xwj", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+              <%= button_tag "5 euros", name: "price_id", value: "price_1NaLN5DMXuq8UgRgdIEsOaR3", class: "btn btn-primary rounded px-3 py-2 mx-1" %>
+            <% end %>
           </div>
           <div class="d-flex justify-content-center mb-2">Ou</div>
           <div class="d-flex justify-content-center">
