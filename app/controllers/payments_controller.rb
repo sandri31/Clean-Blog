@@ -4,30 +4,27 @@ class PaymentsController < ApplicationController
   def create_checkout_session
     Stripe.api_key = Rails.env.production? ? ENV['STRIPE_SECRET_KEY'] : ENV['STRIPE_TEST_SECRET_KEY']
 
-    amount_in_euros = params[:amount].to_i
-    # puts "amount: #{amount}"
-
-    if amount_in_euros <= 0
-      flash[:alert] = 'Oups, petit problème technique, veuillez réessayer'
-      redirect_to root_path
-      return
+    if params[:price_id].present?
+      line_items = [{
+        price: params[:price_id],
+        quantity: 1
+      }]
+    else
+      line_items = [{
+        price_data: {
+          product_data: {
+            name: 'Donation'
+          },
+          unit_amount: (params[:amount].to_i * 100), # Stripe utilise des centimes, donc nous devons convertir les euros en centimes
+          currency: 'eur'
+        },
+        quantity: 1
+      }]
     end
-
-    # Convert amount in euros to cents
-    amount_in_euros *= 100
 
     session = Stripe::Checkout::Session.create({
                                                  payment_method_types: ['card'],
-                                                 line_items: [{
-                                                   price_data: {
-                                                     currency: 'eur',
-                                                     product_data: {
-                                                       name: 'Donation'
-                                                     },
-                                                     unit_amount: amount_in_euros
-                                                   },
-                                                   quantity: 1
-                                                 }],
+                                                 line_items:,
                                                  mode: 'payment',
                                                  success_url: root_url + '?payment=success',
                                                  cancel_url: root_url + '?payment=cancel'
