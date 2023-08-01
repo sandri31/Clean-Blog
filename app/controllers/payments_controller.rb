@@ -15,7 +15,7 @@ class PaymentsController < ApplicationController
           product_data: {
             name: 'Donation'
           },
-          unit_amount: (params[:amount].to_i * 100), # Stripe utilise des centimes, donc nous devons convertir les euros en centimes
+          unit_amount: (params[:amount].to_i * 100),
           currency: 'eur'
         },
         quantity: 1
