@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <!-- HTML Meta Tags -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1", shrink-to-fit=no>
-    <meta name="author" content="Sandri Florent">
-    <meta name="description" content="Le blog de Sandri Florent sur la programmation - Ruby, Ruby on Rails, Bootstrap, etc.">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@cleanblog">
-    <meta name="twitter:creator" content="@cleanblog">
-    <meta name="twitter:title" content="Rubyiste">
-    <meta name="twitter:description" content="Le blog de Sandri Florent sur la programmation - Ruby, Ruby on Rails, Bootstrap, etc.">
-    <meta name="twitter:image" content="https://i.postimg.cc/05cL4jZz/Clean-Blog.png">
-    <meta property="og:url" content="https://cleanblog.herokuapp.com/">
-    <meta property="og:image" content="https://i.postimg.cc/05cL4jZz/Clean-Blog.png">
     <title>Clean Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1", shrink-to-fit=no>
+    <meta name="author" content="Florent Sandri">
+    <meta name="description" content="Le blog de Florent Sandri sur la programmation web - Ruby, Ruby on Rails, Bootstrap, etc.">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://clean-blog-production.up.railway.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Clean Blog">
+    <meta property="og:description" content="Le blog de Florent Sandri sur la programmation web - Ruby, Ruby on Rails, Bootstrap, etc.">
+    <meta property="og:image" content="<%= asset_path('img/banniere.png') %>">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="ruby-on-rails-jobs.com">
+    <meta property="twitter:url" content="https://clean-blog-production.up.railway.app/">
+    <meta name="twitter:title" content="Clean Blog">
+    <meta name="twitter:description" content="Le blog de Florent Sandri sur la programmation web - Ruby, Ruby on Rails, Bootstrap, etc.">
+    <meta name="twitter:image" content="<%= asset_path('img/banniere.png') %>">
+
     <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/zvkqpCp6/kisspng-computer-icons-portable-network-graphics-favicon-a-5c5070b55429a4-2694430115487756053447.png" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
