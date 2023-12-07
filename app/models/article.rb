@@ -9,7 +9,7 @@ class Article < ApplicationRecord
   has_many :categories, through: :article_categories
 
   validates :title, presence: true, length: { minimum: 3, maximum: 100 }
-  validates :body, presence: true, length: { minimum: 5, maximum: 15_000 }
+  validates :body, presence: true, length: { minimum: 5, maximum: 9000 }
   validates :user_id, presence: true
 
   extend FriendlyId
